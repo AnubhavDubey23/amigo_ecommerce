@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIGO | My Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/dark-theme.css" type="text/css">
+    <style>
+        body { background: #0a0a0a; }
+        .profile-container {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .profile-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 20px;
+        }
+        .profile-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #c9a96e;
+            margin-bottom: 10px;
+        }
+        .profile-header p {
+            margin: 0;
+            color: #888;
+        }
+        .section-label {
+            color: #f5f5f5;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        #user-details {
+            color: #a0a0a0;
+            line-height: 1.8;
+        }
+        #user-details strong {
+            color: #ddd;
+        }
+        .btn-signout {
+            margin-top: 20px;
+            background: transparent;
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+            padding: 8px 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-signout:hover {
+            background: #ff4d4d;
+            color: #fff;
+        }
+        .orders-table {
+            width: 100%;
+            margin-top: 20px;
+            color: #a0a0a0;
+        }
+        .orders-table th {
+            color: #f5f5f5;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .orders-table td {
+            padding: 15px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 600;
+            background: rgba(201, 169, 110, 0.2);
+            color: #c9a96e;
+        }
+        .status-delivered {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="./index.html"><span style="font-family: Playfair Display, serif; font-size: 28px; font-weight: 700; color: #f5f5f5; letter-spacing: 6px; text-transform: uppercase;">AMIGO</span></a>
+                </div>
+                <div class="header-right">
+                    <a href="profile.html" id="user-profile-link">
+                        <img src="img/icons/man.png" alt="User">
+                    </a>
+                    <a href="shopping-cart.html">
+                        <img src="img/icons/bag.png" alt="Cart">
+                        <span>0</span>
+                    </a>
+                </div>
+                <div class="user-access">
+                    <a href="#" id="logout-link">Log out</a>
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./categories.html">Shop</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <h2>My Profile</h2>
+                        <p>Manage your account and view your orders.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="section-label">Account Details</h4>
+                            <div id="user-details">
+                                Loading...
+                            </div>
+                            <button class="btn-signout" id="signout-btn">Sign Out</button>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <h4 class="section-label">Order History</h4>
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders-list">
+                                    <tr><td colspan="4">Loading orders...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search model -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        // Self-contained profile logic — does NOT depend on main.js loading first
+        const token = localStorage.getItem('amigo_token');
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+
+        function doLogout() {
+            localStorage.removeItem('amigo_token');
+            localStorage.removeItem('amigo_user');
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('signout-btn').addEventListener('click', doLogout);
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            doLogout();
+        });
+
+        // Fetch profile data
+        if (token) {
+            fetch('/api/user/profile', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    // Token expired or invalid
+                    localStorage.removeItem('amigo_token');
+                    localStorage.removeItem('amigo_user');
+                    window.location.href = 'login.html';
+                    throw new Error('Unauthorized');
+                }
+                return res.json();
+            })
+            .then(data => {
+                // Populate User Details
+                document.getElementById('user-details').innerHTML =
+                    '<strong>Name:</strong> ' + data.user.firstName + ' ' + data.user.lastName + '<br>' +
+                    '<strong>Email:</strong> ' + data.user.email;
+
+                // Populate Orders
+                const ordersTbody = document.getElementById('orders-list');
+                if (data.orders && data.orders.length > 0) {
+                    ordersTbody.innerHTML = '';
+                    data.orders.forEach(function(order) {
+                        const statusClass = order.status === 'Delivered' ? 'status-badge status-delivered' : 'status-badge';
+                        ordersTbody.innerHTML +=
+                            '<tr>' +
+                                '<td><strong>' + order.id + '</strong></td>' +
+                                '<td>' + order.date + '</td>' +
+                                '<td>$' + order.total.toFixed(2) + '</td>' +
+                                '<td><span class="' + statusClass + '">' + order.status + '</span></td>' +
+                            '</tr>';
+                    });
+                } else {
+                    ordersTbody.innerHTML = '<tr><td colspan="4">No orders yet.</td></tr>';
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load profile', err);
+                document.getElementById('user-details').innerHTML = 'Failed to load profile data.';
+                document.getElementById('orders-list').innerHTML = '<tr><td colspan="4">Failed to load orders.</td></tr>';
+            });
+        }
+    </script>
+</body>
+</html>

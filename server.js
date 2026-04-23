@@ -30,6 +30,14 @@ const productSchema = new mongoose.Schema({
     price: Number,
     image_url: String,
     category: String,
+    description: String,
+    product_info: String,
+    reviews: [{
+        author: String,
+        rating: Number,
+        text: String
+    }],
+    product_care: String,
     oldId: Number // Legacy SQLite ID
 });
 const Product = mongoose.model('Product', productSchema);
@@ -122,13 +130,71 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-// Get Products
+// Get Products (supports ?sort=price_asc|price_desc|newest|name&category=coats)
 app.get('/api/products', async (req, res) => {
     try {
-        const products = await Product.find({});
+        const { sort, category } = req.query;
+        let filter = {};
+        if (category && category !== 'all') {
+            filter.category = { $regex: new RegExp('^' + category + '$', 'i') };
+        }
+        
+        let sortObj = {};
+        switch (sort) {
+            case 'price_asc': sortObj = { price: 1 }; break;
+            case 'price_desc': sortObj = { price: -1 }; break;
+            case 'newest': sortObj = { _id: -1 }; break;
+            case 'name': sortObj = { name: 1 }; break;
+            default: sortObj = {};
+        }
+        
+        const products = await Product.find(filter).sort(sortObj);
         res.json(products);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch products' });
+    }
+});
+
+// Get Single Product
+app.get('/api/products/:id', async (req, res) => {
+    try {
+        let product;
+        if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+            product = await Product.findById(req.params.id);
+        } else {
+            const numericId = Number(req.params.id);
+            if (!isNaN(numericId)) {
+                product = await Product.findOne({ oldId: numericId });
+            }
+        }
+        
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json(product);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch product' });
+    }
+});
+
+// Search Products
+app.get('/api/search', async (req, res) => {
+    try {
+        const query = req.query.q || '';
+        if (!query.trim()) {
+            return res.json([]);
+        }
+        const products = await Product.find({
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { category: { $regex: query, $options: 'i' } }
+            ]
+        });
+        res.json(products);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Search failed' });
     }
 });
 
@@ -209,6 +275,25 @@ app.delete('/api/cart/:id', authenticateToken, async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to remove from cart' });
+    }
+});
+
+// User Profile & Orders (Mock)
+app.get('/api/user/profile', authenticateToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        
+        // Mock Orders
+        const mockOrders = [
+            { id: 'ORD-9821', date: '2026-04-12', total: 425.00, status: 'Delivered' },
+            { id: 'ORD-1045', date: '2026-04-20', total: 890.00, status: 'Shipped' }
+        ];
+
+        res.json({ user, orders: mockOrders });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch profile' });
     }
 });
 

@@ -7,7 +7,7 @@
     <meta name="keywords" content="AMIGO, luxury, clothing, fashion, premium">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AMIGO | Luxury Clothing</title>
+    <title>AMIGO | Shop</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -50,11 +50,13 @@
                     <a href="./index.html"><span style="font-family: Playfair Display, serif; font-size: 28px; font-weight: 700; color: #f5f5f5; letter-spacing: 6px; text-transform: uppercase;">AMIGO</span></a>
                 </div>
                 <div class="header-right">
-                    <img src="img/icons/search.png" alt="" class="search-trigger">
-                    <img src="img/icons/man.png" alt="">
-                    <a href="#">
-                        <img src="img/icons/bag.png" alt="">
-                        <span>2</span>
+                    <img src="img/icons/search.png" alt="Search" class="search-trigger" style="cursor: pointer;">
+                    <a href="login.html" id="user-profile-link">
+                        <img src="img/icons/man.png" alt="User">
+                    </a>
+                    <a href="shopping-cart.html">
+                        <img src="img/icons/bag.png" alt="Cart">
+                        <span>0</span>
                     </a>
                 </div>
                 <div class="user-access">
@@ -132,274 +134,35 @@
                         <div class="categories-filter">
                             <div class="cf-left">
                                 <form action="#">
-                                    <select class="sort">
+                                    <select class="sort" id="sort-select">
                                         <option value="">Sort by</option>
-                                        <option value="">Orders</option>
-                                        <option value="">Newest</option>
-                                        <option value="">Price</option>
+                                        <option value="price_asc">Price: Low to High</option>
+                                        <option value="price_desc">Price: High to Low</option>
+                                        <option value="newest">Newest First</option>
+                                        <option value="name">Name: A to Z</option>
                                     </select>
                                 </form>
                             </div>
                             <div class="cf-right">
-                                <span>20 Products</span>
-                                <a href="#">2</a>
-                                <a href="#" class="active">4</a>
-                                <a href="#">6</a>
+                                <span id="product-count">Products</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-9.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-9.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Noir Cashmere Overcoat</h6>
-                            </a>
-                            <p>$389</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-2.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Royal Navy Blazer</h6>
-                                    </a>
-                                    <p>$425</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-3.jpg" alt="">
-                                    <div class="p-status">new</div>
-                                    <div class="hover-icon">
-                                        <a href="img/products/img-3.jpg" class="pop-up"><img
-                                                src="img/icons/zoom-plus.png" alt=""></a>
-                                    </div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Premium Linen Shirt</h6>
-                                    </a>
-                                    <p>$3495</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-6.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Royal Navy Blazer</h6>
-                                    </a>
-                                    <p>$425</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-1.jpg" alt="">
-                                    <div class="hover-icon">
-                                        <a href="img/products/img-1.jpg" class="pop-up"><img
-                                                src="img/icons/zoom-plus.png" alt=""></a>
-                                    </div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Premium Linen Shirt</h6>
-                                    </a>
-                                    <p>$3495</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-5.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-5.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Noir Cashmere Overcoat</h6>
-                            </a>
-                            <p>$389</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-4.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-4.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Obsidian Chelsea Boots</h6>
-                            </a>
-                            <p>$520</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-8.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-8.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Obsidian Chelsea Boots</h6>
-                            </a>
-                            <p>$520</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-10.jpg" alt="">
-                            <div class="p-status popular">popular</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-10.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Obsidian Chelsea Boots</h6>
-                            </a>
-                            <p>$520</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-11.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Royal Navy Blazer</h6>
-                                    </a>
-                                    <p>$410</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-12.jpg" alt="">
-                                    <div class="p-status">new</div>
-                                    <div class="hover-icon">
-                                        <a href="img/products/img-12.jpg" class="pop-up"><img
-                                                src="img/icons/zoom-plus.png" alt=""></a>
-                                    </div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Premium Linen Shirt</h6>
-                                    </a>
-                                    <p>$3495</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-14.jpg" alt="">
-                                    <div class="p-status sale">sale</div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Royal Navy Blazer</h6>
-                                    </a>
-                                    <p>$425</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single-product-item">
-                                <figure>
-                                    <img src="img/products/img-15.jpg" alt="">
-                                    <div class="hover-icon">
-                                        <a href="img/products/img-15.jpg" class="pop-up"><img
-                                                src="img/icons/zoom-plus.png" alt=""></a>
-                                    </div>
-                                </figure>
-                                <div class="product-text">
-                                    <a href="#">
-                                        <h6>Premium Linen Shirt</h6>
-                                    </a>
-                                    <p>$3495</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single-product-item">
-                        <figure>
-                            <img src="img/products/img-13.jpg" alt="">
-                            <div class="p-status">new</div>
-                            <div class="hover-icon">
-                                <a href="img/products/img-13.jpg" class="pop-up"><img src="img/icons/zoom-plus.png"
-                                        alt=""></a>
-                            </div>
-                        </figure>
-                        <div class="product-text">
-                            <a href="#">
-                                <h6>Noir Cashmere Overcoat</h6>
-                            </a>
-                            <p>$389</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="more-product">
-                <div class="row">
+                <div class="row" style="margin-top: 15px;">
                     <div class="col-lg-12 text-center">
-                        <a href="#" class="primary-btn">Load More</a>
+                        <ul class="category-tabs" style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                            <li><a href="#" class="category-tab active" data-category="all" style="font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a96e; border-radius: 4px; transition: all 0.3s;">All</a></li>
+                            <li><a href="#" class="category-tab" data-category="coats" style="font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #a0a0a0; text-decoration: none; padding: 8px 16px; border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.3s;">Coats</a></li>
+                            <li><a href="#" class="category-tab" data-category="bags" style="font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #a0a0a0; text-decoration: none; padding: 8px 16px; border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.3s;">Bags</a></li>
+                            <li><a href="#" class="category-tab" data-category="shoes" style="font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #a0a0a0; text-decoration: none; padding: 8px 16px; border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.3s;">Shoes</a></li>
+                            <li><a href="#" class="category-tab" data-category="accessories" style="font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #a0a0a0; text-decoration: none; padding: 8px 16px; border: 1px solid #2a2a2a; border-radius: 4px; transition: all 0.3s;">Accessories</a></li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+            <div class="row" id="product-list">
+                <!-- Products loaded dynamically by main.js -->
             </div>
         </div>
     </section>
@@ -439,7 +202,7 @@
                                 <li>Search</li>
                                 <li>Privacy Policy</li>
                                 <li>2025 Collection</li>
-                                <li>Shipping & Delivery</li>
+                                <li>Shipping &amp; Delivery</li>
                                 <li>Gallery</li>
                             </ul>
                         </div>

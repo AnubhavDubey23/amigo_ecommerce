@@ -144,6 +144,10 @@ a:focus {
   color: var(--text-secondary) !important;
 }
 
+#user-profile-link {
+  margin-right: 20px;
+}
+
 .inner-header .user-access a.in::before {
   color: var(--text-muted) !important;
 }
@@ -182,6 +186,7 @@ a:focus {
 /* ---- Search Overlay ---- */
 .search-model {
   background: rgba(10, 10, 10, 0.97) !important;
+  z-index: 9999 !important;
 }
 
 .search-model-form input {
@@ -276,8 +281,26 @@ a:focus {
 .hero-items .owl-nav button[type=button] {
   background: rgba(201, 169, 110, 0.3) !important;
   color: var(--accent) !important;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent) !important;
   transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-items .owl-nav button[type=button].owl-prev {
+  left: 30px;
+}
+
+.hero-items .owl-nav button[type=button].owl-next {
+  right: 30px;
 }
 
 .hero-items .owl-nav button[type=button]:hover {
@@ -1071,4 +1094,170 @@ div.container.text-center.pt-5 p a {
   100% {
     background-position: 200px 0;
   }
+}
+
+/* ---- Product Hover Overlay ---- */
+.single-product-item figure {
+  position: relative;
+}
+
+.product-hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.single-product-item:hover .product-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-hover-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none !important;
+  border: 2px solid transparent;
+}
+
+.product-hover-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 15px rgba(201, 169, 110, 0.5);
+  background: var(--accent-light) !important;
+  color: var(--bg-primary) !important;
+}
+
+.product-hover-btn i {
+  line-height: 1;
+}
+
+.product-hover-btn .fa-check {
+  color: var(--success) !important;
+}
+
+/* ---- Notification Toast ---- */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---- Search Results ---- */
+.search-model {
+  z-index: 99998 !important;
+}
+
+#search-results {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+#search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+#search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#search-results::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+/* ---- Product Card Cursor ---- */
+.single-product-item figure a {
+  cursor: pointer;
+}
+
+.single-product-item .product-text a {
+  cursor: pointer;
+}
+
+.single-product-item .product-text a:hover h6 {
+  color: var(--accent) !important;
+  transition: color 0.3s ease;
+}
+
+/* ---- Product Detail Tabs ---- */
+.p-info li {
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-info li.active {
+  color: var(--accent) !important;
+  border-bottom: 2px solid var(--accent);
+}
+
+.p-info li:hover {
+  color: var(--accent-light) !important;
+}
+
+.product-tab-content {
+  animation: fadeInTab 0.3s ease;
+}
+
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Category Filter Tabs ---- */
+.category-tab:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.category-tab.active {
+  background: rgba(201, 169, 110, 0.1);
+}
+
+/* ---- Sort Dropdown Dark Theme ---- */
+.categories-page .nice-select {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+.categories-page .nice-select .list {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+.categories-page .nice-select .list li {
+  color: var(--text-secondary) !important;
+}
+
+.categories-page .nice-select .list li:hover,
+.categories-page .nice-select .list li.selected {
+  background: rgba(201, 169, 110, 0.15) !important;
+  color: var(--accent) !important;
 }
