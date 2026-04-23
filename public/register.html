@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIGO | Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/dark-theme.css" type="text/css">
+</head>
+<body style="background: #0a0a0a; min-height: 100vh; padding: 80px 0;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div style="background: #141414; border: 1px solid #2a2a2a; border-radius: 8px; padding: 50px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <div class="text-center" style="margin-bottom: 40px;">
+                        <a href="./index.html"><span style="font-family: Playfair Display, serif; font-size: 32px; font-weight: 700; color: #f5f5f5; letter-spacing: 6px; text-transform: uppercase;">AMIGO</span></a>
+                        <p style="color: #888; font-size: 14px; margin-top: 15px;">Create an account to track orders and save your details.</p>
+                    </div>
+
+                    <form id="register-form" class="contact-form">
+                        <div id="register-error" style="color: #ff4d4d; font-size: 13px; margin-bottom: 15px; display: none;"></div>
+                        <div class="row">
+                            <div class="col-md-6" style="margin-bottom: 25px;">
+                                <label style="color: #a0a0a0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block;">First Name</label>
+                                <input type="text" id="reg-firstname" required placeholder="John" style="width: 100%; background: transparent; border: 0; border-bottom: 1px solid #333; color: #f5f5f5; padding: 10px 0; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#c9a96e'" onblur="this.style.borderColor='#333'">
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 25px;">
+                                <label style="color: #a0a0a0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block;">Last Name</label>
+                                <input type="text" id="reg-lastname" required placeholder="Doe" style="width: 100%; background: transparent; border: 0; border-bottom: 1px solid #333; color: #f5f5f5; padding: 10px 0; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#c9a96e'" onblur="this.style.borderColor='#333'">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 25px;">
+                            <label style="color: #a0a0a0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block;">Email Address</label>
+                            <input type="email" id="reg-email" required placeholder="john.doe@example.com" style="width: 100%; background: transparent; border: 0; border-bottom: 1px solid #333; color: #f5f5f5; padding: 10px 0; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#c9a96e'" onblur="this.style.borderColor='#333'">
+                        </div>
+
+                        <div style="margin-bottom: 30px;">
+                            <label style="color: #a0a0a0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block;">Password</label>
+                            <input type="password" id="reg-password" required placeholder="Create a secure password" style="width: 100%; background: transparent; border: 0; border-bottom: 1px solid #333; color: #f5f5f5; padding: 10px 0; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#c9a96e'" onblur="this.style.borderColor='#333'">
+                        </div>
+                        
+                        <div style="margin-bottom: 30px;">
+                            <label style="color: #888; font-size: 13px; display: flex; align-items: flex-start; cursor: pointer;">
+                                <input type="checkbox" required style="margin-right: 12px; margin-top: 4px;"> 
+                                <span>I agree to the <a href="#" style="color: #c9a96e;">Terms of Service</a> and <a href="#" style="color: #c9a96e;">Privacy Policy</a>.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" style="width: 100%; background: transparent; border: 1px solid #c9a96e; color: #c9a96e; padding: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='#c9a96e'; this.style.color='#0a0a0a';" onmouseout="this.style.background='transparent'; this.style.color='#c9a96e';">Create Account</button>
+                    </form>
+
+                    <div class="text-center" style="margin-top: 30px;">
+                        <p style="color: #888; font-size: 14px;">Already have an account? <a href="login.html" style="color: #c9a96e;">Sign In</a></p>
+                        <a href="index.html" style="color: #666; font-size: 13px; text-decoration: underline; margin-top: 15px; display: inline-block;">Return to Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('reg-firstname').value;
+            const lastName = document.getElementById('reg-lastname').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const errorDiv = document.getElementById('register-error');
+            
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, email, password })
+                });
+                
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('amigo_token', data.token);
+                    localStorage.setItem('amigo_user', JSON.stringify(data.user));
+                    window.location.href = 'index.html';
+                } else {
+                    errorDiv.innerText = data.error || 'Registration failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.innerText = 'Server connection failed';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
